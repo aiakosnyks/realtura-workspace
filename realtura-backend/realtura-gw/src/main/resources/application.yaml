@@ -1,0 +1,24 @@
+spring:
+  main:
+    web-application-type: reactive
+    allow-bean-definition-overriding: true
+  application:
+    name: realtura-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: realtura-user-service
+          uri: http://localhost:8091
+          predicates:
+            - Path=/api/v1/users/**
+        - id: realtura-main
+          uri: http://localhost:8051
+          predicates:
+            - Path=/api/v1/subscriptions/**
+        - id: realtura-listing-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/v1/listings/**
+server:
+  port: 8080
+

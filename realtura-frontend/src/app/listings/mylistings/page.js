@@ -9,6 +9,7 @@ import {router} from "next/client";
 import {useRouter} from "next/navigation";
 import {format, isValid} from "date-fns";
 import {toast} from "react-toastify";
+import FilterColumn from "@/app/components/FilterColumn";
 
 const page = 0;
 const size = 10;
@@ -29,6 +30,7 @@ const Dashboard = () => {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Cache-Control' : 'no-cache'
                     },
                     body: JSON.stringify({ page, size, userId: userId }),
                 });
@@ -97,6 +99,7 @@ const Dashboard = () => {
         const date = new Date(year, month - 1, day, hour, minute, second, millisecond / 1000000);
         return date.getTime() >= Date.now();
     }
+
     return (
         <div className={styles.main}>
             <div className={styles.buttonContainer}>
@@ -115,7 +118,6 @@ const Dashboard = () => {
                     <ListingCard key={listing.id} listing={listing}/>
                 ))}
             </div>
-
         </div>
     );
 };

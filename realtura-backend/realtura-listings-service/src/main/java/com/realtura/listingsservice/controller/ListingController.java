@@ -6,6 +6,7 @@ import com.realtura.listingsservice.dto.request.ListingSearchRequest;
 import com.realtura.listingsservice.dto.response.CreateResponse;
 import com.realtura.listingsservice.dto.response.GenericResponse;
 import com.realtura.listingsservice.dto.response.ListingResponse;
+import com.realtura.listingsservice.model.Listing;
 import com.realtura.listingsservice.service.ListingService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Slf4j
@@ -43,5 +45,11 @@ public class ListingController {
     @DeleteMapping("/delete")
     public ResponseEntity<GenericResponse<?>> delete(@RequestBody ListingDeleteRequest request) {
         return new ResponseEntity<>(listingService.delete(request), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public GenericResponse<Optional<Listing>> getById(@PathVariable Long id) {
+        Optional<Listing> listing = listingService.getById(id);
+        return GenericResponse.success(listing);
     }
 }

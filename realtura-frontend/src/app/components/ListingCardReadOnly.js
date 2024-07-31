@@ -1,19 +1,30 @@
 'use client';
-import { Card, CardBody, CardHeader } from "@nextui-org/card";
+import {
+    Card,
+    CardBody,
+    CardHeader
+} from "@nextui-org/card";
 import Image from 'next/image';
 import { useState } from "react";
 import { toast } from "react-toastify";
 import {useRouter} from "next/navigation";
 
 const ListingCardReadOnly = ({ listing }) => {
+    const router = useRouter();
     const { country, city, state } = listing.address;
 
     const location = `${country.toUpperCase()}, ${city}, ${state}`;
     console.log(listing);
 
+
+    const handleDetail = () => {
+        router.push(`/listings/detail/${listing.id}`);
+    };
+
+
     return (
         <div style={{ display: "flex" }}>
-            <Card className="py-4" style={{ width: '100%' }}>
+            <Card className="py-4" style={{width: '100%'}}>
                 <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
                     <p className="text-tiny uppercase font-bold">{location}</p>
                     <small className="text-default-500">{listing.price}</small>
@@ -29,6 +40,7 @@ const ListingCardReadOnly = ({ listing }) => {
                         priority={true}  // Add priority property here
                     />
                 </CardBody>
+                <button onClick={handleDetail}>View</button>
             </Card>
         </div>
     );

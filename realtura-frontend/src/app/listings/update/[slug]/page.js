@@ -23,6 +23,7 @@ const UpdateListing = ({ params }) => {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
+                            'Cache-Control': 'no-cache'
                         },
                         body: JSON.stringify({ page, size, id: slug, userId: userId }),
                     });

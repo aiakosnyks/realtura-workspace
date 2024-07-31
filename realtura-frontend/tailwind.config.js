@@ -5,7 +5,7 @@ const {nextui} = require("@nextui-org/theme");
 module.exports = {
   content: [
     "./node_modules/@nextui-org/theme/dist/components/(card|navbar|ripple).js"
-],
+  ],
   theme: {
     extend: {},
   },

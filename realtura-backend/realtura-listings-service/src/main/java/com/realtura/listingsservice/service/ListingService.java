@@ -20,7 +20,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
@@ -53,6 +52,15 @@ public class ListingService {
         log.info("db'den getirildi. listing size:{}", listings.getSize());
 
         return ListingConverter.toResponse(listings.stream().toList());
+    }
+
+    public Optional<Listing> getById(Long id) {
+        Optional<Listing> foundListing = listingRepository.findById(id);
+        if (foundListing.isEmpty()) {
+            log.error(ExceptionMessages.LISTING_NOT_FOUND);
+            throw new RuntimeException(ExceptionMessages.LISTING_NOT_FOUND);
+        }
+        return foundListing;
     }
 
 

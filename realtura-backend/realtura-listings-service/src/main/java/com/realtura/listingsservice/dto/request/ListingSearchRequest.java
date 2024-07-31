@@ -15,12 +15,18 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ListingSearchRequest extends BaseSearchRequest{
 
+    private Long id;
     private Long userId;
     private String description;
     private Address address;
-    private Integer netArea;
-    private Integer grossArea;
-    private Integer builtIn;
+    private Integer netAreaLowerBound;
+    private Integer netAreaUpperBound;
+    private Integer grossAreaLowerBound;
+    private Integer grossAreaUpperBound;
+    private Integer builtInLowerBound;
+    private Integer builtInUpperBound;
+    private Integer priceUpperBound;
+    private Integer priceLowerBound;
     private HeatingType heatingType;
     private int bathroom;
     private int bedroom;

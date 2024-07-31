@@ -1,6 +1,7 @@
 import ListingCard from "@/app/components/ListingCard";
 import styles from './page.module.css'
 import ListingCardReadOnly from "@/app/components/ListingCardReadOnly";
+import FilterColumn from "@/app/components/FilterColumn";
 
 const page = 0;
 const size = 10;
@@ -10,6 +11,7 @@ const fetchListings = async () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Cache-Control': 'no-cache'
             },
             body: JSON.stringify({ page, size}),
         });
@@ -32,7 +34,6 @@ const Dashboard = async () => {
                     <ListingCardReadOnly key={listing.id} listing={listing} />
                 ))}
             </div>
-
         </div>
     );
 };

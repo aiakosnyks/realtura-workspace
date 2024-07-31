@@ -3,7 +3,6 @@ import ListingCard from '../components/ListingCard'; // Adjusted to reflect the 
 import {Card, CardBody, CardFooter, Image} from "@nextui-org/react";
 import styles from './page.module.css'
 
-
 const page = 0;
 const size = 10;
 const fetchListings = async () => {
@@ -12,6 +11,7 @@ const fetchListings = async () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Cache-Control' : 'no-cache'
             },
             body: JSON.stringify({ page, size}),
         });

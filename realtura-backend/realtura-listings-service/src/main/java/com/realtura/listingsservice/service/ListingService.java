@@ -34,7 +34,7 @@ public class ListingService {
 
     public GenericResponse<?> save(ListingSaveRequest request) {
         Listing listing = ListingConverter.toListing(request, request.getAddress());
-        GenericResponse<?> response = subscriptionService.useCredit(request.getUserId());
+        GenericResponse<?> response = subscriptionService.useCredit(request.getUserId()); // genericResponse olayını netleştir
         if (response.getStatus().equals("FAILED")) return response;
         Listing createdListing= listingRepository.save(listing);
         return GenericResponse.success(new CreateResponse(createdListing.getId()));

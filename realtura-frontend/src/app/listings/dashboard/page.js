@@ -27,6 +27,7 @@ const Dashboard = async () => {
     const listings = await fetchListings();
     console.log(listings);
     return (
+        <div>
         <div className={styles.main} >
             <h1 className={styles.description}>İlanlar</h1>
             <div className={styles.card}>
@@ -34,6 +35,8 @@ const Dashboard = async () => {
                     <ListingCardReadOnly key={listing.id} listing={listing} />
                 ))}
             </div>
+        </div>
+        <FilterColumn />
         </div>
     );
 };

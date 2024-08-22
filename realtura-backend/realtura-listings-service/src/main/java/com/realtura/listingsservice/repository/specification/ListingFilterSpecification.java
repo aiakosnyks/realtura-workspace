@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class ListingSpecification {
+public class ListingFilterSpecification {
 
     public static Specification<Listing> initListingSpecification(ListingSearchRequest request) {
         return (root, query, criteriaBuilder) -> {

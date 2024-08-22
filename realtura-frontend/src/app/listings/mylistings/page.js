@@ -14,7 +14,6 @@ import FilterColumn from "@/app/components/FilterColumn";
 const page = 0;
 const size = 10;
 
-
 const Dashboard = () => {
     const { userId } = useAuth();
     const [listings, setListings] = useState([])
@@ -75,6 +74,7 @@ const Dashboard = () => {
         console.log('Purchase subscription page routed');
         router.push("/subscribe");
     }
+
     const formatDate = (dateArray) => {
         if (!Array.isArray(dateArray) || dateArray.length < 6) {
             return "Invalid date";
@@ -89,6 +89,7 @@ const Dashboard = () => {
 
         return format(date, 'yyyy-MM-dd HH:mm:ss'); // Adjust the format as needed
     };
+
     const checkCredits = () => {
         if (subscriptions.credits <= 0) return false;
         const dateArray = subscriptions.subscribedUntil;

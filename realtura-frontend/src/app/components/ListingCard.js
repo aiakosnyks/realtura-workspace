@@ -20,7 +20,7 @@ const ListingCard = ({ listing }) => {
     useEffect(() => {
         if (isInitialRender) {
             setIsInitialRender(false);
-            return; // Skip the initial render
+            return;
         }
         const updateStatus = async () => {
             try {
